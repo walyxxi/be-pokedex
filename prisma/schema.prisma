@@ -11,9 +11,11 @@ datasource db {
 }
 
 model MyPokemon {
-  id     String @id @db.VarChar(20)
-  name   String @db.VarChar(50)
-  nikame String @db.VarChar(100)
+  uid          Int    @id @default(autoincrement())
+  id           Int    @db.Int()
+  name         String @db.VarChar(50)
+  nickname     String @db.VarChar(100)
+  count_update Int    @default(0) @db.Int()
 
-  @@map("myPokemon")
+  @@map("mypokemon")
 }
