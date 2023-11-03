@@ -1,6 +1,18 @@
 import mypokemonService from "../service/mypokemon_service.js";
 import { fibonacci, isPrime, randomBoolean } from "../util/index.js";
 
+const get = async (req, res, next) => {
+  try {
+    const offset = parseInt(req.query.offset);
+    const limit = parseInt(req.query.limit);
+
+    const result = await mypokemonService.get(offset, limit);
+    res.status(200).json(result);
+  } catch (e) {
+    next(e);
+  }
+};
+
 const catchPokemon = (req, res, next) => {
   try {
     const random = randomBoolean();
@@ -26,7 +38,7 @@ const create = async (req, res, next) => {
     const body = req.body;
     const result = await mypokemonService.create(body);
 
-    res.status(200).json({
+    res.status(201).json({
       message: "Sucessfully create.",
       data: result,
     });
@@ -95,6 +107,7 @@ const remove = async (req, res, next) => {
 };
 
 export default {
+  get,
   catchPokemon,
   create,
   update,
