@@ -75,6 +75,7 @@ const remove = async (uid) => {
       uid: pokemonId,
     },
   });
+  console.log(totalInDatabase);
 
   if (totalInDatabase !== 1) {
     throw new ResponseError(404, "Pokemon is not found.");
@@ -82,7 +83,7 @@ const remove = async (uid) => {
 
   return prismaClient.myPokemon.delete({
     where: {
-      uid: id,
+      uid: pokemonId,
     },
   });
 };

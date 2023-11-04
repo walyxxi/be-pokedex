@@ -81,7 +81,7 @@ const update = async (req, res, next) => {
 
 const remove = async (req, res, next) => {
   try {
-    const randomNumber = Math.floor(Math.random() * 1000);
+    const randomNumber = Math.floor(Math.random() * 100);
     const isPrimeNumber = isPrime(randomNumber);
 
     const data = {
