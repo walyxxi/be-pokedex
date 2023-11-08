@@ -10,7 +10,7 @@ const editMyPokemonValidation = Joi.object({
   id: Joi.number().positive().required(),
   name: Joi.string().max(50).required(),
   nickname: Joi.string().max(100).required(),
-  count_update: Joi.number().positive().required(),
+  count_update: Joi.number().required(),
 });
 
 const getMyPokemonValidation = Joi.number().positive().required();
